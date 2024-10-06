@@ -85,8 +85,8 @@ def GetCluster(p):
     dist = []
     for lv in range(6):
         FD = (p[0] - cluster_table[lv][0]) ** 2 + (p[1] - cluster_table[lv][1]) ** 2 + (p[2] - cluster_table[lv][2]) ** 2
-        if (p[0] - cluster_table[lv][0]) * (p[2] - cluster_table[lv][2]) < 0:
-            FD += 0.1 * (abs(p[0] - cluster_table[lv][0]) + abs(p[2] - cluster_table[lv][2]))
+        # if (p[0] - cluster_table[lv][0]) * (p[2] - cluster_table[lv][2]) < 0:
+        #     FD += 0.1 * (abs(p[0] - cluster_table[lv][0]) + abs(p[2] - cluster_table[lv][2]))
         dist.append(FD ** 0.5)
     return dist.index(min(dist)) + 1
 
@@ -134,6 +134,7 @@ def TestPlot(SetTemp):
     plt.ylabel("cluster Lv")
     plt.xlabel("current temp")
     plt.grid(True)
+    plt.xticks(range(17,41,2))
     #plt.show()
     
     # Show the plot in Streamlit
