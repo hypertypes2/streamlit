@@ -107,13 +107,13 @@ def simulation(test_case, TC_num, TC_list):
         TC_list[TC_num].append(zone_dict[cluster_lv])
         TC_list[TC_num].append(PMV)
 
-def TestPlot(SetTemp):
+def TestPlot(Temp):
     TC_result = defaultdict(list)
     cases = defaultdict(list)
     N = 1000
     for i in range(N):
         # random.randrange() :  int
-        Temp = round(random.uniform(17.5,41),1)
+        SetTemp = (random.randrange(16,31))
         Hum = round(random.uniform(27,95),0)
         test = [Temp,Hum,SetTemp]  
         for inputs in test:
@@ -147,7 +147,7 @@ tab1, tab2 = st.tabs(["Run Simulation", "Generate Simulation"])
 
 
 with tab1:
-    temp = st.number_input("Input Temperature (C):", min_value=16.0, max_value=30.0, value=25.0, step=0.5)
+    temp = st.number_input("Input Temperature (C):", min_value=16.0, max_value=41.0, value=25.0, step=0.5)
     humidity = st.number_input("Input Humidity (%):", min_value=0, max_value=100, value=50, step=1)
     target_temp = st.number_input("Input Target Temperature (C):", min_value=16.0, max_value=30.0, value=18.0, step=0.5,key='tab1')
     if st.button("Run Simulation"):
@@ -170,9 +170,9 @@ with tab1:
                 st.write(f"PMV Temperature : {PMV_temp:.1f} C")
 
 with tab2:
-    target_temp = st.number_input("Input Target Temperature (C):", min_value=16.0, max_value=30.0, value=18.0, step=0.5, key='tab2')
+    temp = st.number_input("Input Temperature (C):", min_value=16.0, max_value=41.0, value=18.0, step=0.5, key='tab2')
 
     if st.button("Generate Plot"):
         with st.spinner("Generating plot..."):
-            TestPlot(target_temp)  # target_temp만 전달
+            TestPlot(temp)  # temp만 전달
 
