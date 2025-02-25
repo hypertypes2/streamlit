@@ -126,15 +126,16 @@ def TestPlot(Temp):
             cases[n].append(TC_result[n][i])
            
     plt.figure(figsize=(5,3))
-    plt.title(f"set temp : {SetTemp}")
+    plt.title(f"temp : {Temp}")
     for i in range(1,len(cases)+1):
         if cases[i][3] == 'THERMO OFF':
             continue
-        plt.scatter(cases[i][0],cases[i][3])
+        plt.scatter(cases[i][2],cases[i][3])
     plt.ylabel("cluster Lv")
-    plt.xlabel("current temp")
+    plt.xlabel("Set temp")
     plt.grid(True)
-    plt.xticks(range(17,41,2))
+    plt.xticks(range(16,31,1))
+    plt.yticks(range(1,7,1))
     #plt.show()
     
     # Show the plot in Streamlit
