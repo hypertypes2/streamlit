@@ -32,7 +32,7 @@ def CalibrateSettingTemp(SetTemp, PmvTemp):
     ST = SetTemp * 100
     PT = PmvTemp * 100
     nStep, nCol = 0, 0
-    if ST <= 2400:
+    if ST < 2400:
         nStep = 0
     elif ST <= 2600:
         nStep = 1
